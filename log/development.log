@@ -1,0 +1,11 @@
+  [1m[35m (318.1ms)[0m  [1m[35mCREATE DATABASE "taskleaf_development" ENCODING = 'unicode'[0m
+  [1m[35m (364.8ms)[0m  [1m[35mCREATE DATABASE "taskleaf_test" ENCODING = 'unicode'[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE DATABASE "taskleaf_development" ENCODING = 'unicode'[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE DATABASE "taskleaf_test" ENCODING = 'unicode'[0m
+Started GET "/" for ::1 at 2019-08-20 16:17:24 +0900
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/nttk/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/railties-6.0.0/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/nttk/.rbenv/versions/2.6.3/lib/ruby/gems/2.6.0/gems/railties-6.0.0/lib/rails/templates/rails/welcome/index.html.erb (Duration: 28.5ms | Allocations: 490)
+Completed 200 OK in 65ms (Views: 46.8ms | ActiveRecord: 0.0ms | Allocations: 2896)
+
+

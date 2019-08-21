@@ -788,3 +788,10 @@ Processing by Admin::UsersController#new as HTML
 Completed 200 OK in 27ms (Views: 15.0ms | ActiveRecord: 5.9ms | Allocations: 18255)
 
 
+Started GET "/login" for ::1 at 2019-08-21 16:38:54 +0900
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.slim within layouts/application
+  Rendered sessions/new.html.slim within layouts/application (Duration: 3.4ms | Allocations: 3740)
+Completed 200 OK in 31ms (Views: 30.0ms | ActiveRecord: 0.0ms | Allocations: 19656)
+
+

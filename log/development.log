@@ -241,3 +241,39 @@ Processing by TasksController#index as HTML
 Completed 200 OK in 8ms (Views: 7.5ms | ActiveRecord: 0.0ms | Allocations: 5131)
 
 
+Started GET "/tasks" for ::1 at 2019-08-21 11:41:50 +0900
+Processing by TasksController#index as HTML
+  Rendering tasks/index.html.slim within layouts/application
+  Rendered tasks/index.html.slim within layouts/application (Duration: 12.0ms | Allocations: 9755)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.0ms | Allocations: 11003)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+     9:       th = Task.human_attribute_name(:name)
+    10:       th = Task.human_attribute_name(:created_at)
+    11:   tbody
+    12:     - @tasks.each do |task|
+    13:       tr
+    14:         td = task.name
+    15:         td = task.created_at
+  
+app/views/tasks/index.html.slim:12
+Started GET "/tasks" for ::1 at 2019-08-21 11:44:11 +0900
+Processing by TasksController#index as HTML
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/views/tasks/index.html.slim:12
+  Rendered tasks/index.html.slim within layouts/application (Duration: 9.0ms | Allocations: 3972)
+Completed 200 OK in 19ms (Views: 13.8ms | ActiveRecord: 4.5ms | Allocations: 14003)
+
+
+Started GET "/tasks" for ::1 at 2019-08-21 11:46:28 +0900
+Processing by TasksController#index as HTML
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks"[0m
+  ↳ app/views/tasks/index.html.slim:12
+  Rendered tasks/index.html.slim within layouts/application (Duration: 14.6ms | Allocations: 7292)
+Completed 200 OK in 24ms (Views: 19.6ms | ActiveRecord: 2.4ms | Allocations: 12823)
+
+

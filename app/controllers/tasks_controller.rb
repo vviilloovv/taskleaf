@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   def index
-    @tasks = current_user.tasks
+    @tasks = current_user.tasks.order(created_at: :desc)
   end
 
   def show
@@ -37,8 +37,7 @@ class TasksController < ApplicationController
   end
 
   private
-
-  def task_params
-    params.require(:task).permit(:name, :description)
-  end
+    def task_params
+      params.require(:task).recent
+    end
 end

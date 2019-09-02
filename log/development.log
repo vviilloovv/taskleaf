@@ -2027,3 +2027,51 @@ Processing by TasksController#index as HTML
 Completed 200 OK in 16ms (Views: 12.9ms | ActiveRecord: 0.6ms | Allocations: 9499)
 
 
+Started GET "/tasks?q%5Bname_cont%5D=&q%5Bcreated_at_gteq%5D=2019-09-02+16%3A20%3A00&commit=%E6%A4%9C%E7%B4%A2" for ::1 at 2019-09-02 17:02:06 +0900
+Processing by TasksController#index as HTML
+  Parameters: {"q"=>{"name_cont"=>"", "created_at_gteq"=>"2019-09-02 16:20:00"}, "commit"=>"検索"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1 AND "tasks"."created_at" >= '2019-09-02 07:20:00'[0m  [["user_id", 4]]
+  ↳ app/views/tasks/index.html.slim:25
+  Rendered tasks/index.html.slim within layouts/application (Duration: 12.2ms | Allocations: 13754)
+Completed 200 OK in 41ms (Views: 23.1ms | ActiveRecord: 6.8ms | Allocations: 35815)
+
+
+Started GET "/?commit=%E6%A4%9C%E7%B4%A2&q%5Bcreated_at_gteq%5D=2019-09-02+16%3A20%3A00&q%5Bname_cont%5D=&q%5Bs%5D=name+desc" for ::1 at 2019-09-02 17:02:07 +0900
+Processing by TasksController#index as HTML
+  Parameters: {"commit"=>"検索", "q"=>{"created_at_gteq"=>"2019-09-02 16:20:00", "name_cont"=>"", "s"=>"name desc"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1 AND "tasks"."created_at" >= '2019-09-02 07:20:00' ORDER BY "tasks"."name" DESC[0m  [["user_id", 4]]
+  ↳ app/views/tasks/index.html.slim:25
+  Rendered tasks/index.html.slim within layouts/application (Duration: 3.6ms | Allocations: 1888)
+Completed 200 OK in 17ms (Views: 14.0ms | ActiveRecord: 0.6ms | Allocations: 9977)
+
+
+Started GET "/?commit=%E6%A4%9C%E7%B4%A2&q%5Bcreated_at_gteq%5D=2019-09-02+16%3A20%3A00&q%5Bname_cont%5D=&q%5Bs%5D=name+asc" for ::1 at 2019-09-02 17:02:08 +0900
+Processing by TasksController#index as HTML
+  Parameters: {"commit"=>"検索", "q"=>{"created_at_gteq"=>"2019-09-02 16:20:00", "name_cont"=>"", "s"=>"name asc"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1 AND "tasks"."created_at" >= '2019-09-02 07:20:00' ORDER BY "tasks"."name" ASC[0m  [["user_id", 4]]
+  ↳ app/views/tasks/index.html.slim:25
+  Rendered tasks/index.html.slim within layouts/application (Duration: 3.3ms | Allocations: 1874)
+Completed 200 OK in 17ms (Views: 12.9ms | ActiveRecord: 0.8ms | Allocations: 9911)
+
+
+Started GET "/?commit=%E6%A4%9C%E7%B4%A2&q%5Bcreated_at_gteq%5D=2019-09-02+16%3A20%3A00&q%5Bname_cont%5D=&q%5Bs%5D=name+desc" for ::1 at 2019-09-02 17:02:09 +0900
+Processing by TasksController#index as HTML
+  Parameters: {"commit"=>"検索", "q"=>{"created_at_gteq"=>"2019-09-02 16:20:00", "name_cont"=>"", "s"=>"name desc"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1 AND "tasks"."created_at" >= '2019-09-02 07:20:00' ORDER BY "tasks"."name" DESC[0m  [["user_id", 4]]
+  ↳ app/views/tasks/index.html.slim:25
+  Rendered tasks/index.html.slim within layouts/application (Duration: 3.6ms | Allocations: 1871)
+Completed 200 OK in 17ms (Views: 14.1ms | ActiveRecord: 0.5ms | Allocations: 9911)
+
+

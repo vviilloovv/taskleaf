@@ -1844,3 +1844,96 @@ Processing by SessionsController#new as HTML
 Completed 200 OK in 1091ms (Views: 1083.1ms | ActiveRecord: 0.0ms | Allocations: 1646223)
 
 
+Started GET "/login" for ::1 at 2019-09-02 16:29:06 +0900
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.slim within layouts/application
+  Rendered sessions/new.html.slim within layouts/application (Duration: 13.0ms | Allocations: 11711)
+Completed 200 OK in 1086ms (Views: 1075.6ms | ActiveRecord: 0.0ms | Allocations: 1646232)
+
+
+Started POST "/login" for ::1 at 2019-09-02 16:29:12 +0900
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"J6WE54B+NlXc/GcpJyLyzX7e7mFF7fWiRMq+4t1KdcxCItRXXn3x5CVaio6Km9uhOENsBoTH7G2Ty7s89B7oMQ==", "session"=>{"email"=>"user@example.com", "password"=>"[FILTERED]"}, "commit"=>"ログインする"}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:8:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 212ms (ActiveRecord: 5.8ms | Allocations: 7650)
+
+
+Started GET "/" for ::1 at 2019-09-02 16:29:12 +0900
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (4.9ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1 ORDER BY "tasks"."created_at" DESC[0m  [["user_id", 4]]
+  ↳ app/views/tasks/index.html.slim:13
+  Rendered tasks/index.html.slim within layouts/application (Duration: 735.4ms | Allocations: 94881)
+Completed 200 OK in 754ms (Views: 740.8ms | ActiveRecord: 5.9ms | Allocations: 106450)
+
+
+Started GET "/tasks/new" for ::1 at 2019-09-02 16:29:16 +0900
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/new.html.slim within layouts/application
+  Rendered tasks/new.html.slim within layouts/application (Duration: 6.6ms | Allocations: 5041)
+Completed 200 OK in 45ms (Views: 16.4ms | ActiveRecord: 3.2ms | Allocations: 16066)
+
+
+Started POST "/tasks/new/confirm" for ::1 at 2019-09-02 16:29:24 +0900
+Processing by TasksController#confirm_new as HTML
+  Parameters: {"authenticity_token"=>"XDXJW47M/hT6b0eO1BhHuItGgIOcF9Bffg9KqDPFetvZMfaSEgYXxmagicnHrgSKwB/DQL18uNIJBXV5YgsFEw==", "task"=>{"name"=>"確認画面", "description"=>""}, "commit"=>"確認"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/confirm_new.html.slim within layouts/application
+  Rendered tasks/confirm_new.html.slim within layouts/application (Duration: 4.1ms | Allocations: 4835)
+Completed 200 OK in 19ms (Views: 13.5ms | ActiveRecord: 0.2ms | Allocations: 13626)
+
+
+Started POST "/tasks" for ::1 at 2019-09-02 16:29:34 +0900
+Processing by TasksController#create as HTML
+  Parameters: {"authenticity_token"=>"3Uh7BNw3w0kEPfQmhpz0Rv0nrbPtj/0e4nLAZM6TUQe4zyu0AjQE+P2bGYErJd0qu7ov1Cyl5NE1c8W658fM+g==", "task"=>{"name"=>"確認画面", "description"=>""}, "back"=>"戻る"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/new.html.slim within layouts/application
+  Rendered tasks/new.html.slim within layouts/application (Duration: 1.0ms | Allocations: 565)
+Completed 200 OK in 14ms (Views: 11.4ms | ActiveRecord: 0.2ms | Allocations: 8353)
+
+
+Started POST "/tasks/new/confirm" for ::1 at 2019-09-02 16:29:38 +0900
+Processing by TasksController#confirm_new as HTML
+  Parameters: {"authenticity_token"=>"ZP96ApnwH/pMMY+9EWeIVVuzKnzG9sYjPRyv6+H2zLABeCqyR/PYS7WXYhq83qE5HS6oGwfc3+zqHao1yKJRTQ==", "task"=>{"name"=>"確認画面", "description"=>""}, "commit"=>"確認"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/confirm_new.html.slim within layouts/application
+  Rendered tasks/confirm_new.html.slim within layouts/application (Duration: 0.8ms | Allocations: 454)
+Completed 200 OK in 13ms (Views: 10.7ms | ActiveRecord: 0.3ms | Allocations: 8324)
+
+
+Started POST "/tasks" for ::1 at 2019-09-02 16:29:39 +0900
+Processing by TasksController#create as HTML
+  Parameters: {"authenticity_token"=>"5fpLYf1/77Xj+T0Xa/6K12eaPcRVeYU8Mt7jkTlsMbKAfRvRI3woBBpf0LDGR6O7IQe/o5RTnPPl3+ZPEDisTw==", "task"=>{"name"=>"確認画面", "description"=>""}, "commit"=>"登録"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tasks_controller.rb:36:in `create'
+  [1m[36mTask Create (4.0ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "確認画面"], ["description", ""], ["created_at", "2019-09-02 07:29:39.567434"], ["updated_at", "2019-09-02 07:29:39.567434"], ["user_id", 4]]
+  ↳ app/controllers/tasks_controller.rb:36:in `create'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tasks_controller.rb:36:in `create'
+Redirected to http://localhost:3000/tasks
+Completed 302 Found in 9ms (ActiveRecord: 4.6ms | Allocations: 3497)
+
+
+Started GET "/tasks" for ::1 at 2019-09-02 16:29:39 +0900
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1 ORDER BY "tasks"."created_at" DESC[0m  [["user_id", 4]]
+  ↳ app/views/tasks/index.html.slim:13
+  Rendered tasks/index.html.slim within layouts/application (Duration: 1.7ms | Allocations: 963)
+Completed 200 OK in 13ms (Views: 11.6ms | ActiveRecord: 0.3ms | Allocations: 8644)
+
+

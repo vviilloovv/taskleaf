@@ -1937,3 +1937,45 @@ Processing by TasksController#index as HTML
 Completed 200 OK in 13ms (Views: 11.6ms | ActiveRecord: 0.3ms | Allocations: 8644)
 
 
+Started GET "/tasks" for ::1 at 2019-09-02 16:41:21 +0900
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/Users/nttk/Git/rails/taskleaf/app/controllers/tasks_controller.rb:6: syntax error, unexpected tIVAR, expecting ')'
+    @tasks = @q.result(dictinct: true)....
+    ^~~~~~):
+  
+app/controllers/tasks_controller.rb:6: syntax error, unexpected tIVAR, expecting ')'
+app/controllers/tasks_controller.rb:6: syntax error, unexpected tIVAR, expecting ')'
+app/controllers/tasks_controller.rb:6: syntax error, unexpected tIVAR, expecting ')'
+Started GET "/tasks" for ::1 at 2019-09-02 16:42:11 +0900
+  
+SyntaxError (/Users/nttk/Git/rails/taskleaf/app/controllers/tasks_controller.rb:6: syntax error, unexpected tIVAR, expecting ')'
+    @tasks = @q.result(distinct: true)....
+    ^~~~~~):
+  
+app/controllers/tasks_controller.rb:6: syntax error, unexpected tIVAR, expecting ')'
+app/controllers/tasks_controller.rb:6: syntax error, unexpected tIVAR, expecting ')'
+app/controllers/tasks_controller.rb:6: syntax error, unexpected tIVAR, expecting ')'
+Started GET "/tasks" for ::1 at 2019-09-02 16:43:03 +0900
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (1.0ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1 ORDER BY "tasks"."created_at" DESC[0m  [["user_id", 4]]
+  ↳ app/views/tasks/index.html.slim:21
+  Rendered tasks/index.html.slim within layouts/application (Duration: 114.1ms | Allocations: 127512)
+Completed 200 OK in 1016ms (Views: 993.5ms | ActiveRecord: 6.4ms | Allocations: 1772117)
+
+
+Started GET "/tasks?q%5Bname_cont%5D=%E7%A2%BA%E8%AA%8D&commit=%E6%A4%9C%E7%B4%A2" for ::1 at 2019-09-02 16:47:01 +0900
+Processing by TasksController#index as HTML
+  Parameters: {"q"=>{"name_cont"=>"確認"}, "commit"=>"検索"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1 AND "tasks"."name" ILIKE '%確認%' ORDER BY "tasks"."created_at" DESC[0m  [["user_id", 4]]
+  ↳ app/views/tasks/index.html.slim:21
+  Rendered tasks/index.html.slim within layouts/application (Duration: 4.1ms | Allocations: 1313)
+Completed 200 OK in 17ms (Views: 13.5ms | ActiveRecord: 0.6ms | Allocations: 9264)
+
+

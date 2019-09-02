@@ -67,3 +67,6 @@ gem "rails-i18n"
 
 # URLをリンクとして表示する
 gem "rails_autolink"
+
+# 検索機能
+gem "ransack"

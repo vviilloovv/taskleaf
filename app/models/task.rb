@@ -11,4 +11,12 @@ class Task < ApplicationRecord
     def validate_name_not_including_comma
       errors.add(:name, "にカンマを含めることはできません") if name&.include?(',')
     end
+
+    def ransackable_attributes(auth_object = nil)
+      %w!name created_at!
+    end
+
+    def ransackable_associations(auth_object = nul)
+      []
+    end
 end

@@ -1979,3 +1979,51 @@ Processing by TasksController#index as HTML
 Completed 200 OK in 17ms (Views: 13.5ms | ActiveRecord: 0.6ms | Allocations: 9264)
 
 
+Started GET "/tasks?q%5Bname_cont%5D=%E7%A2%BA%E8%AA%8D&commit=%E6%A4%9C%E7%B4%A2" for ::1 at 2019-09-02 16:51:20 +0900
+Processing by TasksController#index as HTML
+  Parameters: {"q"=>{"name_cont"=>"確認"}, "commit"=>"検索"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1 AND "tasks"."name" ILIKE '%確認%' ORDER BY "tasks"."created_at" DESC[0m  [["user_id", 4]]
+  ↳ app/views/tasks/index.html.slim:25
+  Rendered tasks/index.html.slim within layouts/application (Duration: 7.2ms | Allocations: 8671)
+Completed 200 OK in 24ms (Views: 20.4ms | ActiveRecord: 0.5ms | Allocations: 23891)
+
+
+Started GET "/tasks?q%5Bname_cont%5D=%E7%A2%BA%E8%AA%8D&commit=%E6%A4%9C%E7%B4%A2" for ::1 at 2019-09-02 16:58:22 +0900
+Processing by TasksController#index as HTML
+  Parameters: {"q"=>{"name_cont"=>"確認"}, "commit"=>"検索"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (0.5ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1 AND "tasks"."name" ILIKE '%確認%' ORDER BY "tasks"."created_at" DESC[0m  [["user_id", 4]]
+  ↳ app/views/tasks/index.html.slim:25
+  Rendered tasks/index.html.slim within layouts/application (Duration: 6.5ms | Allocations: 5259)
+Completed 200 OK in 26ms (Views: 15.0ms | ActiveRecord: 0.9ms | Allocations: 19946)
+
+
+Started GET "/tasks?q%5Bname_cont%5D=%E7%A2%BA%E8%AA%8D&q%5Bcreated_at_gteq%5D=&commit=%E6%A4%9C%E7%B4%A2" for ::1 at 2019-09-02 16:58:24 +0900
+Processing by TasksController#index as HTML
+  Parameters: {"q"=>{"name_cont"=>"確認", "created_at_gteq"=>""}, "commit"=>"検索"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1 AND "tasks"."name" ILIKE '%確認%' ORDER BY "tasks"."created_at" DESC[0m  [["user_id", 4]]
+  ↳ app/views/tasks/index.html.slim:25
+  Rendered tasks/index.html.slim within layouts/application (Duration: 2.6ms | Allocations: 1383)
+Completed 200 OK in 15ms (Views: 11.7ms | ActiveRecord: 0.7ms | Allocations: 9331)
+
+
+Started GET "/tasks?q%5Bname_cont%5D=&q%5Bcreated_at_gteq%5D=2019-09-02+16%3A20%3A00&commit=%E6%A4%9C%E7%B4%A2" for ::1 at 2019-09-02 16:58:44 +0900
+Processing by TasksController#index as HTML
+  Parameters: {"q"=>{"name_cont"=>"", "created_at_gteq"=>"2019-09-02 16:20:00"}, "commit"=>"検索"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1 AND "tasks"."created_at" >= '2019-09-02 07:20:00' ORDER BY "tasks"."created_at" DESC[0m  [["user_id", 4]]
+  ↳ app/views/tasks/index.html.slim:25
+  Rendered tasks/index.html.slim within layouts/application (Duration: 3.7ms | Allocations: 1441)
+Completed 200 OK in 16ms (Views: 12.9ms | ActiveRecord: 0.6ms | Allocations: 9499)
+
+

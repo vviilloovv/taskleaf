@@ -2075,3 +2075,295 @@ Processing by TasksController#index as HTML
 Completed 200 OK in 17ms (Views: 14.1ms | ActiveRecord: 0.5ms | Allocations: 9911)
 
 
+Started GET "/tasks/new" for ::1 at 2019-09-02 17:21:35 +0900
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/new.html.slim within layouts/application
+  Rendered tasks/new.html.slim within layouts/application (Duration: 263.6ms | Allocations: 107409)
+Completed 200 OK in 1386ms (Views: 1348.8ms | ActiveRecord: 4.9ms | Allocations: 1753648)
+
+
+Started POST "/tasks/new/confirm" for ::1 at 2019-09-02 17:22:12 +0900
+Processing by TasksController#confirm_new as HTML
+  Parameters: {"authenticity_token"=>"FxfJJuMXoc5A2jgho24PNIYNtapRHGUSKB3/ikQQzh6SE/bvf91IHNwV9maw2EwGzVT2aXB3DZ9fF8BbFd6x1g==", "task"=>{"name"=>"メール機能実装", "description"=>"- mailer作成\r\n- テンプレート作成\r\n- メール送信処理作成\r\n- 動作確認"}, "commit"=>"確認"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/confirm_new.html.slim within layouts/application
+  Rendered tasks/confirm_new.html.slim within layouts/application (Duration: 6.0ms | Allocations: 5014)
+Completed 200 OK in 27ms (Views: 17.0ms | ActiveRecord: 0.3ms | Allocations: 15687)
+
+
+Started POST "/tasks" for ::1 at 2019-09-02 17:22:14 +0900
+Processing by TasksController#create as HTML
+  Parameters: {"authenticity_token"=>"9hUwzt6UQFvDdODEULK9twn1MTGmmC9zBbplFV88ygGTkmB+AJeH6jrSDWP9C5TbT2izVmeyNrzSu2DLdmhX/A==", "task"=>{"name"=>"メール機能実装", "description"=>"- mailer作成\r\n- テンプレート作成\r\n- メール送信処理作成\r\n- 動作確認"}, "commit"=>"登録"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tasks_controller.rb:37:in `create'
+  [1m[36mTask Create (0.5ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "メール機能実装"], ["description", "- mailer作成\r\n- テンプレート作成\r\n- メール送信処理作成\r\n- 動作確認"], ["created_at", "2019-09-02 08:22:14.063152"], ["updated_at", "2019-09-02 08:22:14.063152"], ["user_id", 4]]
+  ↳ app/controllers/tasks_controller.rb:37:in `create'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tasks_controller.rb:37:in `create'
+  Rendering task_mailer/creation_email.html.slim within layouts/mailer
+  Rendered task_mailer/creation_email.html.slim within layouts/mailer (Duration: 3.0ms | Allocations: 2704)
+  Rendering task_mailer/creation_email.text.slim within layouts/mailer
+  Rendered task_mailer/creation_email.text.slim within layouts/mailer (Duration: 2.2ms | Allocations: 2337)
+TaskMailer#creation_email: processed outbound mail in 18.3ms
+Delivered mail 5d6cd136250df_2d323ff5d5a49e84606d5@CatenaRtemnoMBP.mail (315.8ms)
+Date: Mon, 02 Sep 2019 17:22:14 +0900
+From: taskleaf@example.com
+To: user@example.com
+Message-ID: <5d6cd136250df_2d323ff5d5a49e84606d5@CatenaRtemnoMBP.mail>
+Subject: =?UTF-8?Q?=E3=82=BF=E3=82=B9=E3=82=AF=E4=BD=9C=E6=88=90=E5=AE=8C=E4=BA=86=E3=83=A1=E3=83=BC=E3=83=AB?=
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5d6cd13623c27_2d323ff5d5a49e8460516";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5d6cd13623c27_2d323ff5d5a49e8460516
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+5Lul5LiL44Gu44K/44K544Kv44KS5L2c5oiQ44GX44G+44GX44GfDQrlkI3n
+p7A644Oh44O844Or5qmf6IO95a6f6KOFDQroqbPjgZfjgYToqqzmmI46DQot
+IG1haWxlcuS9nOaIkA0KLSDjg4bjg7Pjg5fjg6zjg7zjg4jkvZzmiJANCi0g
+44Oh44O844Or6YCB5L+h5Yem55CG5L2c5oiQDQotIOWLleS9nOeiuuiqjQ==
+
+----==_mimepart_5d6cd13623c27_2d323ff5d5a49e8460516
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+PCFET0NUWVBFIGh0bWw+PGh0bWw+PGhlYWQ+PG1ldGEgY29udGVudD0idGV4
+dC9odG1sOyBjaGFyc2V0PXV0Zi04IiBodHRwLWVxdWl2PSJDb250ZW50LVR5
+cGUiIC8+PHN0eWxlPiAvKiBFbWFpbCBzdHlsZXMgbmVlZCB0byBiZSBpbmxp
+bmUgKi8gPC9zdHlsZT48L2hlYWQ+PGJvZHk+5Lul5LiL44Gu44K/44K544Kv
+44KS5L2c5oiQ44GX44G+44GX44GfPHVsPjxsaT7lkI3np7Djg6Hjg7zjg6vm
+qZ/og73lrp/oo4U8L2xpPjxsaT7oqbPjgZfjgYToqqzmmI48cD4tIG1haWxl
+cuS9nOaIkA0KPGJyIC8+LSDjg4bjg7Pjg5fjg6zjg7zjg4jkvZzmiJANCjxi
+ciAvPi0g44Oh44O844Or6YCB5L+h5Yem55CG5L2c5oiQDQo8YnIgLz4tIOWL
+leS9nOeiuuiqjTwvcD48L2xpPjwvdWw+PC9ib2R5PjwvaHRtbD4=
+
+----==_mimepart_5d6cd13623c27_2d323ff5d5a49e8460516--
+
+Redirected to http://localhost:3000/tasks
+Completed 302 Found in 404ms (ActiveRecord: 1.2ms | Allocations: 37766)
+
+
+Started GET "/tasks" for ::1 at 2019-09-02 17:22:14 +0900
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/tasks/index.html.slim:25
+  Rendered tasks/index.html.slim within layouts/application (Duration: 9.2ms | Allocations: 10077)
+Completed 200 OK in 28ms (Views: 18.5ms | ActiveRecord: 0.6ms | Allocations: 18128)
+
+
+Started GET "/tasks/new" for ::1 at 2019-09-02 17:26:20 +0900
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/new.html.slim within layouts/application
+  Rendered tasks/new.html.slim within layouts/application (Duration: 2.1ms | Allocations: 562)
+Completed 200 OK in 18ms (Views: 14.2ms | ActiveRecord: 0.6ms | Allocations: 8121)
+
+
+Started POST "/tasks/new/confirm" for ::1 at 2019-09-02 17:26:25 +0900
+Processing by TasksController#confirm_new as HTML
+  Parameters: {"authenticity_token"=>"geDcGF7FW0kxRrvwqeZPwSD423IXE0kUD+59JHPY7JsE5OPRwg+ym62Jdbe6UAzza6GYsTZ4IZl45EL1IhaTUw==", "task"=>{"name"=>"test", "description"=>"testtest"}, "commit"=>"確認"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/confirm_new.html.slim within layouts/application
+  Rendered tasks/confirm_new.html.slim within layouts/application (Duration: 1.3ms | Allocations: 563)
+Completed 200 OK in 15ms (Views: 11.6ms | ActiveRecord: 0.3ms | Allocations: 8445)
+
+
+Started POST "/tasks" for ::1 at 2019-09-02 17:26:26 +0900
+Processing by TasksController#create as HTML
+  Parameters: {"authenticity_token"=>"FCje3wxcZNfxnFN3hnV2DRh6OideIj6kmv3Iv9LCJRJxr45v0l+jZgg6vtArzF9hXue4QJ8IJ2tN/M1h+5a47w==", "task"=>{"name"=>"test", "description"=>"testtest"}, "commit"=>"登録"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tasks_controller.rb:37:in `create'
+  [1m[36mTask Create (0.2ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "test"], ["description", "testtest"], ["created_at", "2019-09-02 08:26:26.005004"], ["updated_at", "2019-09-02 08:26:26.005004"], ["user_id", 4]]
+  ↳ app/controllers/tasks_controller.rb:37:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tasks_controller.rb:37:in `create'
+  Rendering task_mailer/creation_email.html.slim within layouts/mailer
+  Rendered task_mailer/creation_email.html.slim within layouts/mailer (Duration: 0.3ms | Allocations: 127)
+  Rendering task_mailer/creation_email.text.slim within layouts/mailer
+  Rendered task_mailer/creation_email.text.slim within layouts/mailer (Duration: 0.0ms | Allocations: 12)
+TaskMailer#creation_email: processed outbound mail in 3.0ms
+Delivered mail 5d6cd2322e43_2d323ff5d5a49fd860883@CatenaRtemnoMBP.mail (252.3ms)
+Date: Mon, 02 Sep 2019 17:26:26 +0900
+From: taskleaf@example.com
+To: user@example.com
+Message-ID: <5d6cd2322e43_2d323ff5d5a49fd860883@CatenaRtemnoMBP.mail>
+Subject: =?UTF-8?Q?=E3=82=BF=E3=82=B9=E3=82=AF=E4=BD=9C=E6=88=90=E5=AE=8C=E4=BA=86=E3=83=A1=E3=83=BC=E3=83=AB?=
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5d6cd23226b2_2d323ff5d5a49fd8607f5";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5d6cd23226b2_2d323ff5d5a49fd8607f5
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+5Lul5LiL44Gu44K/44K544Kv44KS5L2c5oiQ44GX44G+44GX44GfDQrlkI3n
+p7A6dGVzdA0K6Kmz44GX44GE6Kqs5piOOg0KdGVzdHRlc3Q=
+
+----==_mimepart_5d6cd23226b2_2d323ff5d5a49fd8607f5
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+PCFET0NUWVBFIGh0bWw+PGh0bWw+PGhlYWQ+PG1ldGEgY29udGVudD0idGV4
+dC9odG1sOyBjaGFyc2V0PXV0Zi04IiBodHRwLWVxdWl2PSJDb250ZW50LVR5
+cGUiIC8+PHN0eWxlPiAvKiBFbWFpbCBzdHlsZXMgbmVlZCB0byBiZSBpbmxp
+bmUgKi8gPC9zdHlsZT48L2hlYWQ+PGJvZHk+5Lul5LiL44Gu44K/44K544Kv
+44KS5L2c5oiQ44GX44G+44GX44GfPHVsPjxsaT7lkI3np7B0ZXN0PC9saT48
+bGk+6Kmz44GX44GE6Kqs5piOPHA+dGVzdHRlc3Q8L3A+PC9saT48L3VsPjwv
+Ym9keT48L2h0bWw+
+
+----==_mimepart_5d6cd23226b2_2d323ff5d5a49fd8607f5--
+
+Redirected to http://localhost:3000/tasks
+Completed 302 Found in 261ms (ActiveRecord: 0.8ms | Allocations: 14128)
+
+
+Started GET "/tasks" for ::1 at 2019-09-02 17:26:26 +0900
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/tasks/index.html.slim:25
+  Rendered tasks/index.html.slim within layouts/application (Duration: 2.9ms | Allocations: 2032)
+Completed 200 OK in 46ms (Views: 44.4ms | ActiveRecord: 0.3ms | Allocations: 9763)
+
+
+Started DELETE "/tasks/7" for ::1 at 2019-09-02 17:32:25 +0900
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TasksController#destroy as HTML
+  Parameters: {"authenticity_token"=>"cuYWQX4AQe6gqs9zVHtHenGOs3WSSiU6uOTQE9ba2HwXYUbxoAOGX1kMItT5wm4WNxMxElNgPPVv5dXN/45FgQ==", "id"=>"7"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1 AND "tasks"."id" = $2 LIMIT $3[0m  [["user_id", 4], ["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:56:in `set_task'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tasks_controller.rb:25:in `destroy'
+  [1m[36mTask Destroy (0.3ms)[0m  [1m[31mDELETE FROM "tasks" WHERE "tasks"."id" = $1[0m  [["id", 7]]
+  ↳ app/controllers/tasks_controller.rb:25:in `destroy'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tasks_controller.rb:25:in `destroy'
+Redirected to http://localhost:3000/tasks
+Completed 302 Found in 44ms (ActiveRecord: 6.9ms | Allocations: 17488)
+
+
+Started GET "/tasks" for ::1 at 2019-09-02 17:32:26 +0900
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/tasks/index.html.slim:25
+  Rendered tasks/index.html.slim within layouts/application (Duration: 244.2ms | Allocations: 113533)
+Completed 200 OK in 1292ms (Views: 1281.6ms | ActiveRecord: 0.6ms | Allocations: 1749335)
+
+
+Started GET "/tasks/new" for ::1 at 2019-09-02 17:32:28 +0900
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/new.html.slim within layouts/application
+  Rendered tasks/new.html.slim within layouts/application (Duration: 24.5ms | Allocations: 5042)
+Completed 200 OK in 39ms (Views: 34.9ms | ActiveRecord: 0.5ms | Allocations: 12760)
+
+
+Started POST "/tasks/new/confirm" for ::1 at 2019-09-02 17:32:33 +0900
+Processing by TasksController#confirm_new as HTML
+  Parameters: {"authenticity_token"=>"pPGYdDu+pfyQyuy0aCqRza9jP7k1W5ViZi3fwQrDrdoh9ae9p3RMLgwFIvN7nNL/5Dp8ehQw/e8RJ+AQWw3SEg==", "task"=>{"name"=>"test", "description"=>"testtest"}, "commit"=>"確認"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/confirm_new.html.slim within layouts/application
+  Rendered tasks/confirm_new.html.slim within layouts/application (Duration: 4.5ms | Allocations: 4969)
+Completed 200 OK in 17ms (Views: 13.9ms | ActiveRecord: 0.2ms | Allocations: 13096)
+
+
+Started POST "/tasks" for ::1 at 2019-09-02 17:32:34 +0900
+Processing by TasksController#create as HTML
+  Parameters: {"authenticity_token"=>"8QpD0b/M/3zkdcMOrl7PFbM2DjtBl3oQ52wp18CYbLCUjRNhYc84zR3TLqkD5+Z59auMXIC9Y98wbSwJ6czxTQ==", "task"=>{"name"=>"test", "description"=>"testtest"}, "commit"=>"登録"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tasks_controller.rb:37:in `create'
+  [1m[36mTask Create (0.6ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "test"], ["description", "testtest"], ["created_at", "2019-09-02 08:32:34.763922"], ["updated_at", "2019-09-02 08:32:34.763922"], ["user_id", 4]]
+  ↳ app/controllers/tasks_controller.rb:37:in `create'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tasks_controller.rb:37:in `create'
+  Rendering task_mailer/creation_email.html.slim within layouts/mailer
+  Rendered task_mailer/creation_email.html.slim within layouts/mailer (Duration: 3.4ms | Allocations: 2688)
+  Rendering task_mailer/creation_email.text.slim within layouts/mailer
+  Rendered task_mailer/creation_email.text.slim within layouts/mailer (Duration: 2.3ms | Allocations: 2337)
+TaskMailer#creation_email: processed outbound mail in 13.8ms
+Delivered mail 5d6cd3a2caf0e_347a3fc8b53afe18624e0@CatenaRtemnoMBP.mail (210.4ms)
+Date: Mon, 02 Sep 2019 17:32:34 +0900
+From: taskleaf@example.com
+To: user@example.com
+Message-ID: <5d6cd3a2caf0e_347a3fc8b53afe18624e0@CatenaRtemnoMBP.mail>
+Subject: =?UTF-8?Q?=E3=82=BF=E3=82=B9=E3=82=AF=E4=BD=9C=E6=88=90=E5=AE=8C=E4=BA=86=E3=83=A1=E3=83=BC=E3=83=AB?=
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5d6cd3a2c9ff6_347a3fc8b53afe186236e";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5d6cd3a2c9ff6_347a3fc8b53afe186236e
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+5Lul5LiL44Gu44K/44K544Kv44KS5L2c5oiQ44GX44G+44GX44GfDQrlkI3n
+p7A6dGVzdA0K6Kmz44GX44GE6Kqs5piOOg0KdGVzdHRlc3Q=
+
+----==_mimepart_5d6cd3a2c9ff6_347a3fc8b53afe186236e
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+PCFET0NUWVBFIGh0bWw+PGh0bWw+PGhlYWQ+PG1ldGEgY29udGVudD0idGV4
+dC9odG1sOyBjaGFyc2V0PXV0Zi04IiBodHRwLWVxdWl2PSJDb250ZW50LVR5
+cGUiIC8+PHN0eWxlPiAvKiBFbWFpbCBzdHlsZXMgbmVlZCB0byBiZSBpbmxp
+bmUgKi8gPC9zdHlsZT48L2hlYWQ+PGJvZHk+5Lul5LiL44Gu44K/44K544Kv
+44KS5L2c5oiQ44GX44G+44GX44GfPHVsPjxsaT7lkI3np7B0ZXN0PC9saT48
+bGk+6Kmz44GX44GE6Kqs5piOPHA+dGVzdHRlc3Q8L3A+PC9saT48L3VsPjwv
+Ym9keT48L2h0bWw+
+
+----==_mimepart_5d6cd3a2c9ff6_347a3fc8b53afe186236e--
+
+Redirected to http://localhost:3000/tasks
+Completed 302 Found in 279ms (ActiveRecord: 1.4ms | Allocations: 37276)
+
+
+Started GET "/tasks" for ::1 at 2019-09-02 17:32:35 +0900
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/tasks/index.html.slim:25
+  Rendered tasks/index.html.slim within layouts/application (Duration: 3.1ms | Allocations: 2085)
+Completed 200 OK in 14ms (Views: 11.8ms | ActiveRecord: 0.4ms | Allocations: 9831)
+
+

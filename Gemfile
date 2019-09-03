@@ -70,3 +70,6 @@ gem "rails_autolink"
 
 # 検索機能
 gem "ransack"
+
+# ページング処理
+gem "kaminari"

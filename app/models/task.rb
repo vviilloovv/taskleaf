@@ -1,4 +1,5 @@
 class Task < ApplicationRecord
+  has_one_attached :image
   validates :name, presence: true
   validates :name, length: { maximum: 30 }
   validate :validate_name_not_including_comma
@@ -16,7 +17,7 @@ class Task < ApplicationRecord
       %w!name created_at!
     end
 
-    def ransackable_associations(auth_object = nul)
+    def ransackable_associations(auth_object = nil)
       []
     end
 end

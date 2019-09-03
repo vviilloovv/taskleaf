@@ -2652,3 +2652,114 @@ Sent data tasks-2019090358.csv (6.1ms)
 Completed 200 OK in 13ms (Views: 5.9ms | ActiveRecord: 0.5ms | Allocations: 4731)
 
 
+Started GET "/tasks" for ::1 at 2019-09-03 15:59:12 +0900
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/index.html.slim within layouts/application
+  Rendered tasks/index.html.slim within layouts/application (Duration: 4.0ms | Allocations: 8530)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.5ms | Allocations: 17986)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check h1 タスク一覧
+
+= search_form_for @q, class: "mb-5" do |f|
+  .form-group.row
+    = f.label :name_cont, "名称", class: "col-sm-2 col-form-label"
+    .col-sm-10
+      = f.search_field :name_cont, class: "form-control"
+  .form-group.row
+    = f.label :created_at_gteq, "登録日時", class: "col-sm-2 col-form-label"
+    .col-sm-10
+      = f.search_field :created_at_gteq, class: "form-control"
+  .form-group
+    = f.submit class: "btn btn-outline-primary"
+
+= link_to "新規登録", new_task_path, class: "btn btn-primary"
+
+.mb-3
+table.table.table-hover
+  thead.thead-default
+    tr
+      th = sort_link(@q, :name, default_order: :desc)
+      th = Task.human_attribute_name(:created_at)
+      th
+  tbody
+    - @tasks.each do |task|
+      tr
+        td = link_to task.name, task
+        td = task.created_at
+        td
+          = link_to "編集", edit_task_path(task), class: "btn btn-primary mr-3"
+          = link_to "削除", task, method: :delete, data: { confirm: "タスク「#{task.name}」を削除します。よろしいですか？" }, class: "btn btn-danger"
+= link_to "エクスポート", tasks_path(format: :csv), class: "btn btn-primary mb-3"
+= form_tag import_tasks_path, multipart: true, class: "mb-3" do
+  = file_field_tag :file,
+  = submit_tag "インポート", class: "btn btn-primary"
+
+):
+1:    h1 タスク一覧
+2:    
+3:    = search_form_for @q, class: "mb-5" do |f|
+4:      .form-group.row
+5:        = f.label :name_cont, "名称", class: "col-sm-2 col-form-label"
+6:        .col-sm-10
+7:          = f.search_field :name_cont, class: "form-control"
+8:      .form-group.row
+9:        = f.label :created_at_gteq, "登録日時", class: "col-sm-2 col-form-label"
+10:        .col-sm-10
+11:          = f.search_field :created_at_gteq, class: "form-control"
+12:      .form-group
+13:        = f.submit class: "btn btn-outline-primary"
+14:    
+15:    = link_to "新規登録", new_task_path, class: "btn btn-primary"
+16:    
+17:    .mb-3
+18:    table.table.table-hover
+19:      thead.thead-default
+20:        tr
+21:          th = sort_link(@q, :name, default_order: :desc)
+22:          th = Task.human_attribute_name(:created_at)
+23:          th
+24:      tbody
+25:        - @tasks.each do |task|
+26:          tr
+27:            td = link_to task.name, task
+28:            td = task.created_at
+29:            td
+30:              = link_to "編集", edit_task_path(task), class: "btn btn-primary mr-3"
+31:              = link_to "削除", task, method: :delete, data: { confirm: "タスク「#{task.name}」を削除します。よろしいですか？" }, class: "btn btn-danger"
+32:    = link_to "エクスポート", tasks_path(format: :csv), class: "btn btn-primary mb-3"
+33:    = form_tag import_tasks_path, multipart: true, class: "mb-3" do
+34:      = file_field_tag :file,
+35:      = submit_tag "インポート", class: "btn btn-primary"
+  
+app/views/tasks/index.html.slim:35: syntax error, unexpected '='
+app/views/tasks/index.html.slim:35: syntax error, unexpected '='
+app/views/tasks/index.html.slim:35: syntax error, unexpected '='
+app/views/tasks/index.html.slim:35: syntax error, unexpected '='
+app/views/tasks/index.html.slim:35: syntax error, unexpected '='
+app/views/tasks/index.html.slim:35: syntax error, unexpected '='
+Started GET "/tasks" for ::1 at 2019-09-03 16:00:02 +0900
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (0.6ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/tasks/index.html.slim:25
+  Rendered tasks/index.html.slim within layouts/application (Duration: 13.4ms | Allocations: 14661)
+Completed 200 OK in 34ms (Views: 30.2ms | ActiveRecord: 0.9ms | Allocations: 29605)
+
+
+Started GET "/tasks" for ::1 at 2019-09-03 16:00:14 +0900
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/tasks/index.html.slim:25
+  Rendered tasks/index.html.slim within layouts/application (Duration: 25.0ms | Allocations: 10130)
+Completed 200 OK in 43ms (Views: 39.2ms | ActiveRecord: 1.0ms | Allocations: 25173)
+
+

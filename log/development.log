@@ -2570,3 +2570,85 @@ Processing by TasksController#show as HTML
 Completed 200 OK in 22ms (Views: 18.2ms | ActiveRecord: 0.8ms | Allocations: 10933)
 
 
+Started GET "/tasks" for ::1 at 2019-09-03 14:43:51 +0900
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/Users/nttk/Git/rails/taskleaf/app/controllers/tasks_controller.rb:26: syntax error, unexpected tIDENTIFIER, expecting '}'
+...asks_url, notice: "タスク「#{@task.name}」を更新し...
+...                   ^~~~~~~~~~~~
+/Users/nttk/Git/rails/taskleaf/app/controllers/tasks_controller.rb:63: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/tasks_controller.rb:26: syntax error, unexpected tIDENTIFIER, expecting '}'
+app/controllers/tasks_controller.rb:63: syntax error, unexpected end-of-input, expecting end
+app/controllers/tasks_controller.rb:26: syntax error, unexpected tIDENTIFIER, expecting '}'
+app/controllers/tasks_controller.rb:63: syntax error, unexpected end-of-input, expecting end
+app/controllers/tasks_controller.rb:26: syntax error, unexpected tIDENTIFIER, expecting '}'
+app/controllers/tasks_controller.rb:63: syntax error, unexpected end-of-input, expecting end
+Started GET "/tasks" for ::1 at 2019-09-03 14:44:49 +0900
+  
+SyntaxError (/Users/nttk/Git/rails/taskleaf/app/controllers/tasks_controller.rb:11: syntax error, unexpected end, expecting '}'
+    end
+    ^~~
+/Users/nttk/Git/rails/taskleaf/app/controllers/tasks_controller.rb:63: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/tasks_controller.rb:11: syntax error, unexpected end, expecting '}'
+app/controllers/tasks_controller.rb:63: syntax error, unexpected end-of-input, expecting end
+app/controllers/tasks_controller.rb:11: syntax error, unexpected end, expecting '}'
+app/controllers/tasks_controller.rb:63: syntax error, unexpected end-of-input, expecting end
+app/controllers/tasks_controller.rb:11: syntax error, unexpected end, expecting '}'
+app/controllers/tasks_controller.rb:63: syntax error, unexpected end-of-input, expecting end
+Started GET "/tasks" for ::1 at 2019-09-03 14:45:21 +0900
+  
+SyntaxError (/Users/nttk/Git/rails/taskleaf/app/controllers/tasks_controller.rb:11: syntax error, unexpected end, expecting '}'
+    end
+    ^~~
+/Users/nttk/Git/rails/taskleaf/app/controllers/tasks_controller.rb:63: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/tasks_controller.rb:11: syntax error, unexpected end, expecting '}'
+app/controllers/tasks_controller.rb:63: syntax error, unexpected end-of-input, expecting end
+app/controllers/tasks_controller.rb:11: syntax error, unexpected end, expecting '}'
+app/controllers/tasks_controller.rb:63: syntax error, unexpected end-of-input, expecting end
+app/controllers/tasks_controller.rb:11: syntax error, unexpected end, expecting '}'
+app/controllers/tasks_controller.rb:63: syntax error, unexpected end-of-input, expecting end
+Started GET "/tasks" for ::1 at 2019-09-03 14:45:56 +0900
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (0.4ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/tasks/index.html.slim:25
+  Rendered tasks/index.html.slim within layouts/application (Duration: 225.6ms | Allocations: 196847)
+Completed 500 Internal Server Error in 264ms (ActiveRecord: 5.7ms | Allocations: 209868)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `csv' for #<#<Class:0x00007f8245015670>:0x00007f8243378698>):
+    29:         td
+    30:           = link_to "編集", edit_task_path(task), class: "btn btn-primary mr-3"
+    31:           = link_to "削除", task, method: :delete, data: { confirm: "タスク「#{task.name}」を削除します。よろしいですか？" }, class: "btn btn-danger"
+    32: = link_to "エクスポート", tasks_path(format: csv), class: "btn btn-primary mb-3"
+  
+app/views/tasks/index.html.slim:32
+Started GET "/tasks" for ::1 at 2019-09-03 14:46:55 +0900
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/tasks/index.html.slim:25
+  Rendered tasks/index.html.slim within layouts/application (Duration: 7.8ms | Allocations: 9544)
+Completed 200 OK in 1104ms (Views: 1100.2ms | ActiveRecord: 0.8ms | Allocations: 1644094)
+
+
+Started GET "/tasks.csv" for ::1 at 2019-09-03 14:46:58 +0900
+Processing by TasksController#index as CSV
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/models/task.rb:26:in `block in generate_csv'
+  Rendering text template
+  Rendered text template (Duration: 0.0ms | Allocations: 2)
+Sent data tasks-2019090358.csv (6.1ms)
+Completed 200 OK in 13ms (Views: 5.9ms | ActiveRecord: 0.5ms | Allocations: 4731)
+
+

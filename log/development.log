@@ -2894,3 +2894,370 @@ Processing by SessionsController#new as HTML
 Completed 200 OK in 1152ms (Views: 1140.2ms | ActiveRecord: 0.0ms | Allocations: 1646227)
 
 
+Started POST "/login" for ::1 at 2019-09-04 11:51:24 +0900
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"fMD2oGUfEwyl+iNZXUgQwIld9VrfkHaDrF09Q0+QnZ0zn6v7716XugQ99RGHn1NzpdTVleZV4BnpMAN8xO0F8A==", "session"=>{"email"=>"user@example.com", "password"=>"[FILTERED]"}, "commit"=>"ログインする"}
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user@example.com"], ["LIMIT", 1]]
+  ↳ app/controllers/sessions_controller.rb:8:in `create'
+Redirected to http://localhost:3000/
+Completed 302 Found in 232ms (ActiveRecord: 7.7ms | Allocations: 7798)
+
+
+Started GET "/" for ::1 at 2019-09-04 11:51:24 +0900
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT COUNT(DISTINCT "tasks"."id") FROM "tasks" WHERE "tasks"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/tasks/index.html.slim:18
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT DISTINCT "tasks"."id" AS count_column FROM "tasks" WHERE "tasks"."user_id" = $1 LIMIT $2 OFFSET $3) subquery_for_count[0m  [["user_id", 4], ["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/views/tasks/index.html.slim:19
+  [1m[36mTask Load (0.8ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1 LIMIT $2 OFFSET $3[0m  [["user_id", 4], ["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/views/tasks/index.html.slim:29
+  Rendered tasks/index.html.slim within layouts/application (Duration: 595.9ms | Allocations: 121010)
+Completed 200 OK in 1674ms (Views: 1593.8ms | ActiveRecord: 7.9ms | Allocations: 1773752)
+
+
+Started GET "/" for ::1 at 2019-09-04 13:09:23 +0900
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(DISTINCT "tasks"."id") FROM "tasks" WHERE "tasks"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/tasks/index.html.slim:18
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT DISTINCT "tasks"."id" AS count_column FROM "tasks" WHERE "tasks"."user_id" = $1 LIMIT $2 OFFSET $3) subquery_for_count[0m  [["user_id", 4], ["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/views/tasks/index.html.slim:19
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1 LIMIT $2 OFFSET $3[0m  [["user_id", 4], ["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/views/tasks/index.html.slim:29
+  Rendered tasks/index.html.slim within layouts/application (Duration: 18.6ms | Allocations: 17573)
+Completed 200 OK in 48ms (Views: 34.2ms | ActiveRecord: 1.6ms | Allocations: 40436)
+
+
+Started DELETE "/tasks/5" for ::1 at 2019-09-04 13:09:31 +0900
+Processing by TasksController#destroy as JS
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1 AND "tasks"."id" = $2 LIMIT $3[0m  [["user_id", 4], ["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:67:in `set_task'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tasks_controller.rb:30:in `destroy'
+  [1m[36mActiveStorage::Attachment Load (2.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 5], ["record_type", "Task"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:30:in `destroy'
+  [1m[36mTask Destroy (0.3ms)[0m  [1m[31mDELETE FROM "tasks" WHERE "tasks"."id" = $1[0m  [["id", 5]]
+  ↳ app/controllers/tasks_controller.rb:30:in `destroy'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tasks_controller.rb:30:in `destroy'
+Completed 204 No Content in 42ms (ActiveRecord: 10.7ms | Allocations: 6957)
+
+
+Started GET "/" for ::1 at 2019-09-04 13:09:42 +0900
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(DISTINCT "tasks"."id") FROM "tasks" WHERE "tasks"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/tasks/index.html.slim:18
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT DISTINCT "tasks"."id" AS count_column FROM "tasks" WHERE "tasks"."user_id" = $1 LIMIT $2 OFFSET $3) subquery_for_count[0m  [["user_id", 4], ["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/views/tasks/index.html.slim:19
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1 LIMIT $2 OFFSET $3[0m  [["user_id", 4], ["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/views/tasks/index.html.slim:29
+  Rendered tasks/index.html.slim within layouts/application (Duration: 6.9ms | Allocations: 3831)
+Completed 200 OK in 21ms (Views: 16.9ms | ActiveRecord: 1.1ms | Allocations: 12041)
+
+
+Started GET "/tasks/new" for ::1 at 2019-09-04 13:11:06 +0900
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/new.html.slim within layouts/application
+  Rendered tasks/_form.html.slim (Duration: 147.6ms | Allocations: 100195)
+  Rendered tasks/new.html.slim within layouts/application (Duration: 172.4ms | Allocations: 110167)
+Completed 200 OK in 1227ms (Views: 1187.1ms | ActiveRecord: 5.9ms | Allocations: 1757878)
+
+
+Started POST "/tasks" for ::1 at 2019-09-04 13:11:12 +0900
+Processing by TasksController#create as HTML
+  Parameters: {"authenticity_token"=>"ACB6vwxf3Lv4YGDiQv6yGgS8GSLW0AtY+ffax/fCbgqNbrLjDn+VFrqa8DrxWreIObU5Lr8JBONhaw1QqdhQ1A==", "task"=>{"name"=>"tdr", "description"=>"tdt"}, "commit"=>"登録する"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tasks_controller.rb:42:in `create'
+  [1m[36mTask Create (9.1ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "tdr"], ["description", "tdt"], ["created_at", "2019-09-04 04:11:12.378610"], ["updated_at", "2019-09-04 04:11:12.378610"], ["user_id", 4]]
+  ↳ app/controllers/tasks_controller.rb:42:in `create'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tasks_controller.rb:42:in `create'
+  Rendering task_mailer/creation_email.html.slim within layouts/mailer
+  Rendered task_mailer/creation_email.html.slim within layouts/mailer (Duration: 3.5ms | Allocations: 2718)
+  Rendering task_mailer/creation_email.text.slim within layouts/mailer
+  Rendered task_mailer/creation_email.text.slim within layouts/mailer (Duration: 5.5ms | Allocations: 2337)
+TaskMailer#creation_email: processed outbound mail in 30.1ms
+Delivered mail 5d6f3960b8edc_102d3ff53df3e1bc737de@CatenaRtemnoMBP.mail (26.6ms)
+Date: Wed, 04 Sep 2019 13:11:12 +0900
+From: taskleaf@example.com
+To: user@example.com
+Message-ID: <5d6f3960b8edc_102d3ff53df3e1bc737de@CatenaRtemnoMBP.mail>
+Subject: =?UTF-8?Q?=E3=82=BF=E3=82=B9=E3=82=AF=E4=BD=9C=E6=88=90=E5=AE=8C=E4=BA=86=E3=83=A1=E3=83=BC=E3=83=AB?=
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5d6f3960b61f4_102d3ff53df3e1bc73627";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5d6f3960b61f4_102d3ff53df3e1bc73627
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+5Lul5LiL44Gu44K/44K544Kv44KS5L2c5oiQ44GX44G+44GX44GfDQrlkI3n
+p7A6dGRyDQroqbPjgZfjgYToqqzmmI46DQp0ZHQ=
+
+----==_mimepart_5d6f3960b61f4_102d3ff53df3e1bc73627
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+PCFET0NUWVBFIGh0bWw+PGh0bWw+PGhlYWQ+PG1ldGEgY29udGVudD0idGV4
+dC9odG1sOyBjaGFyc2V0PXV0Zi04IiBodHRwLWVxdWl2PSJDb250ZW50LVR5
+cGUiIC8+PHN0eWxlPiAvKiBFbWFpbCBzdHlsZXMgbmVlZCB0byBiZSBpbmxp
+bmUgKi8gPC9zdHlsZT48L2hlYWQ+PGJvZHk+5Lul5LiL44Gu44K/44K544Kv
+44KS5L2c5oiQ44GX44G+44GX44GfPHVsPjxsaT7lkI3np7B0ZHI8L2xpPjxs
+aT7oqbPjgZfjgYToqqzmmI48cD50ZHQ8L3A+PC9saT48L3VsPjwvYm9keT48
+L2h0bWw+
+
+----==_mimepart_5d6f3960b61f4_102d3ff53df3e1bc73627--
+
+[ActiveJob] Enqueued SampleJob (Job ID: e4f0445d-e4d6-4efc-bc01-3fe48704c5a8) to Sidekiq(default)
+Completed 500 Internal Server Error in 417ms (ActiveRecord: 9.9ms | Allocations: 40989)
+
+
+  
+Redis::CannotConnectError (Error connecting to Redis on 127.0.0.1:6379 (Errno::ECONNREFUSED)):
+  
+app/controllers/tasks_controller.rb:44:in `create'
+Started POST "/tasks" for ::1 at 2019-09-04 13:13:04 +0900
+Processing by TasksController#create as HTML
+  Parameters: {"authenticity_token"=>"ACB6vwxf3Lv4YGDiQv6yGgS8GSLW0AtY+ffax/fCbgqNbrLjDn+VFrqa8DrxWreIObU5Lr8JBONhaw1QqdhQ1A==", "task"=>{"name"=>"tdr", "description"=>"tdt"}, "commit"=>"登録する"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tasks_controller.rb:42:in `create'
+  [1m[36mTask Create (0.2ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "tdr"], ["description", "tdt"], ["created_at", "2019-09-04 04:13:05.012022"], ["updated_at", "2019-09-04 04:13:05.012022"], ["user_id", 4]]
+  ↳ app/controllers/tasks_controller.rb:42:in `create'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tasks_controller.rb:42:in `create'
+  Rendering task_mailer/creation_email.html.slim within layouts/mailer
+  Rendered task_mailer/creation_email.html.slim within layouts/mailer (Duration: 0.3ms | Allocations: 133)
+  Rendering task_mailer/creation_email.text.slim within layouts/mailer
+  Rendered task_mailer/creation_email.text.slim within layouts/mailer (Duration: 0.0ms | Allocations: 12)
+TaskMailer#creation_email: processed outbound mail in 3.0ms
+Delivered mail 5d6f39d15847_102d3ff53df3e2847396a@CatenaRtemnoMBP.mail (1.8ms)
+Date: Wed, 04 Sep 2019 13:13:05 +0900
+From: taskleaf@example.com
+To: user@example.com
+Message-ID: <5d6f39d15847_102d3ff53df3e2847396a@CatenaRtemnoMBP.mail>
+Subject: =?UTF-8?Q?=E3=82=BF=E3=82=B9=E3=82=AF=E4=BD=9C=E6=88=90=E5=AE=8C=E4=BA=86=E3=83=A1=E3=83=BC=E3=83=AB?=
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5d6f39d15153_102d3ff53df3e284738e4";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5d6f39d15153_102d3ff53df3e284738e4
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+5Lul5LiL44Gu44K/44K544Kv44KS5L2c5oiQ44GX44G+44GX44GfDQrlkI3n
+p7A6dGRyDQroqbPjgZfjgYToqqzmmI46DQp0ZHQ=
+
+----==_mimepart_5d6f39d15153_102d3ff53df3e284738e4
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+PCFET0NUWVBFIGh0bWw+PGh0bWw+PGhlYWQ+PG1ldGEgY29udGVudD0idGV4
+dC9odG1sOyBjaGFyc2V0PXV0Zi04IiBodHRwLWVxdWl2PSJDb250ZW50LVR5
+cGUiIC8+PHN0eWxlPiAvKiBFbWFpbCBzdHlsZXMgbmVlZCB0byBiZSBpbmxp
+bmUgKi8gPC9zdHlsZT48L2hlYWQ+PGJvZHk+5Lul5LiL44Gu44K/44K544Kv
+44KS5L2c5oiQ44GX44G+44GX44GfPHVsPjxsaT7lkI3np7B0ZHI8L2xpPjxs
+aT7oqbPjgZfjgYToqqzmmI48cD50ZHQ8L3A+PC9saT48L3VsPjwvYm9keT48
+L2h0bWw+
+
+----==_mimepart_5d6f39d15153_102d3ff53df3e284738e4--
+
+Redirected to http://localhost:3000/tasks
+Completed 302 Found in 32ms (ActiveRecord: 5.0ms | Allocations: 26239)
+
+
+Started GET "/tasks" for ::1 at 2019-09-04 13:13:05 +0900
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(DISTINCT "tasks"."id") FROM "tasks" WHERE "tasks"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/tasks/index.html.slim:18
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT DISTINCT "tasks"."id" AS count_column FROM "tasks" WHERE "tasks"."user_id" = $1 LIMIT $2 OFFSET $3) subquery_for_count[0m  [["user_id", 4], ["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/views/tasks/index.html.slim:19
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1 LIMIT $2 OFFSET $3[0m  [["user_id", 4], ["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/views/tasks/index.html.slim:29
+  Rendered tasks/index.html.slim within layouts/application (Duration: 17.0ms | Allocations: 14450)
+Completed 200 OK in 31ms (Views: 26.5ms | ActiveRecord: 1.1ms | Allocations: 23161)
+
+
+Started DELETE "/tasks/9" for ::1 at 2019-09-04 13:13:10 +0900
+Processing by TasksController#destroy as JS
+  Parameters: {"id"=>"9"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1 AND "tasks"."id" = $2 LIMIT $3[0m  [["user_id", 4], ["id", 9], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:67:in `set_task'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tasks_controller.rb:30:in `destroy'
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 9], ["record_type", "Task"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:30:in `destroy'
+  [1m[36mTask Destroy (0.2ms)[0m  [1m[31mDELETE FROM "tasks" WHERE "tasks"."id" = $1[0m  [["id", 9]]
+  ↳ app/controllers/tasks_controller.rb:30:in `destroy'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tasks_controller.rb:30:in `destroy'
+Completed 204 No Content in 14ms (ActiveRecord: 2.8ms | Allocations: 6871)
+
+
+Started DELETE "/tasks/10" for ::1 at 2019-09-04 13:13:13 +0900
+Processing by TasksController#destroy as JS
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1 AND "tasks"."id" = $2 LIMIT $3[0m  [["user_id", 4], ["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:67:in `set_task'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tasks_controller.rb:30:in `destroy'
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 10], ["record_type", "Task"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:30:in `destroy'
+  [1m[36mTask Destroy (0.2ms)[0m  [1m[31mDELETE FROM "tasks" WHERE "tasks"."id" = $1[0m  [["id", 10]]
+  ↳ app/controllers/tasks_controller.rb:30:in `destroy'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tasks_controller.rb:30:in `destroy'
+Completed 204 No Content in 8ms (ActiveRecord: 1.7ms | Allocations: 4738)
+
+
+Started GET "/tasks" for ::1 at 2019-09-04 13:13:19 +0900
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(DISTINCT "tasks"."id") FROM "tasks" WHERE "tasks"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/tasks/index.html.slim:18
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT DISTINCT "tasks"."id" AS count_column FROM "tasks" WHERE "tasks"."user_id" = $1 LIMIT $2 OFFSET $3) subquery_for_count[0m  [["user_id", 4], ["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/views/tasks/index.html.slim:19
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1 LIMIT $2 OFFSET $3[0m  [["user_id", 4], ["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/views/tasks/index.html.slim:29
+  Rendered tasks/index.html.slim within layouts/application (Duration: 6.8ms | Allocations: 3821)
+Completed 200 OK in 19ms (Views: 16.5ms | ActiveRecord: 1.0ms | Allocations: 12034)
+
+
+Started GET "/tasks/new" for ::1 at 2019-09-04 13:22:34 +0900
+Processing by TasksController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/new.html.slim within layouts/application
+  Rendered tasks/_form.html.slim (Duration: 3.6ms | Allocations: 4849)
+  Rendered tasks/new.html.slim within layouts/application (Duration: 5.9ms | Allocations: 7261)
+Completed 200 OK in 34ms (Views: 19.6ms | ActiveRecord: 0.5ms | Allocations: 32635)
+
+
+Started POST "/tasks" for ::1 at 2019-09-04 13:22:39 +0900
+Processing by TasksController#create as HTML
+  Parameters: {"authenticity_token"=>"QpfNzLxM8Pxiyal8PZ4yL4sNzC5/55dKK3yH21gEEALP2QWQvmy5USAzOaSOOje9tgTsIhY+mPGz4FBMBh4u3A==", "task"=>{"name"=>"tfd", "description"=>"hyi"}, "commit"=>"登録する"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tasks_controller.rb:41:in `create'
+  [1m[36mTask Create (0.6ms)[0m  [1m[32mINSERT INTO "tasks" ("name", "description", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "tfd"], ["description", "hyi"], ["created_at", "2019-09-04 04:22:39.802028"], ["updated_at", "2019-09-04 04:22:39.802028"], ["user_id", 4]]
+  ↳ app/controllers/tasks_controller.rb:41:in `create'
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tasks_controller.rb:41:in `create'
+  Rendering task_mailer/creation_email.html.slim within layouts/mailer
+  Rendered task_mailer/creation_email.html.slim within layouts/mailer (Duration: 2.1ms | Allocations: 2683)
+  Rendering task_mailer/creation_email.text.slim within layouts/mailer
+  Rendered task_mailer/creation_email.text.slim within layouts/mailer (Duration: 1.7ms | Allocations: 2333)
+TaskMailer#creation_email: processed outbound mail in 11.8ms
+Delivered mail 5d6f3c0fc8b92_102d3ff53df3e13074194@CatenaRtemnoMBP.mail (1.8ms)
+Date: Wed, 04 Sep 2019 13:22:39 +0900
+From: taskleaf@example.com
+To: user@example.com
+Message-ID: <5d6f3c0fc8b92_102d3ff53df3e13074194@CatenaRtemnoMBP.mail>
+Subject: =?UTF-8?Q?=E3=82=BF=E3=82=B9=E3=82=AF=E4=BD=9C=E6=88=90=E5=AE=8C=E4=BA=86=E3=83=A1=E3=83=BC=E3=83=AB?=
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--==_mimepart_5d6f3c0fc852c_102d3ff53df3e130740f0";
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+
+----==_mimepart_5d6f3c0fc852c_102d3ff53df3e130740f0
+Content-Type: text/plain;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+5Lul5LiL44Gu44K/44K544Kv44KS5L2c5oiQ44GX44G+44GX44GfDQrlkI3n
+p7A6dGZkDQroqbPjgZfjgYToqqzmmI46DQpoeWk=
+
+----==_mimepart_5d6f3c0fc852c_102d3ff53df3e130740f0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: base64
+
+PCFET0NUWVBFIGh0bWw+PGh0bWw+PGhlYWQ+PG1ldGEgY29udGVudD0idGV4
+dC9odG1sOyBjaGFyc2V0PXV0Zi04IiBodHRwLWVxdWl2PSJDb250ZW50LVR5
+cGUiIC8+PHN0eWxlPiAvKiBFbWFpbCBzdHlsZXMgbmVlZCB0byBiZSBpbmxp
+bmUgKi8gPC9zdHlsZT48L2hlYWQ+PGJvZHk+5Lul5LiL44Gu44K/44K544Kv
+44KS5L2c5oiQ44GX44G+44GX44GfPHVsPjxsaT7lkI3np7B0ZmQ8L2xpPjxs
+aT7oqbPjgZfjgYToqqzmmI48cD5oeWk8L3A+PC9saT48L3VsPjwvYm9keT48
+L2h0bWw+
+
+----==_mimepart_5d6f3c0fc852c_102d3ff53df3e130740f0--
+
+Redirected to http://localhost:3000/tasks
+Completed 302 Found in 25ms (ActiveRecord: 1.6ms | Allocations: 25766)
+
+
+Started GET "/tasks" for ::1 at 2019-09-04 13:22:39 +0900
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(DISTINCT "tasks"."id") FROM "tasks" WHERE "tasks"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/tasks/index.html.slim:18
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT DISTINCT "tasks"."id" AS count_column FROM "tasks" WHERE "tasks"."user_id" = $1 LIMIT $2 OFFSET $3) subquery_for_count[0m  [["user_id", 4], ["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/views/tasks/index.html.slim:19
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1 LIMIT $2 OFFSET $3[0m  [["user_id", 4], ["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/views/tasks/index.html.slim:29
+  Rendered tasks/index.html.slim within layouts/application (Duration: 15.0ms | Allocations: 14044)
+Completed 200 OK in 28ms (Views: 24.7ms | ActiveRecord: 1.3ms | Allocations: 22453)
+
+
+Started DELETE "/tasks/11" for ::1 at 2019-09-04 13:22:43 +0900
+Processing by TasksController#destroy as JS
+  Parameters: {"id"=>"11"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  [1m[36mTask Load (0.2ms)[0m  [1m[34mSELECT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1 AND "tasks"."id" = $2 LIMIT $3[0m  [["user_id", 4], ["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:66:in `set_task'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/tasks_controller.rb:30:in `destroy'
+  [1m[36mActiveStorage::Attachment Load (0.4ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 11], ["record_type", "Task"], ["name", "image"], ["LIMIT", 1]]
+  ↳ app/controllers/tasks_controller.rb:30:in `destroy'
+  [1m[36mTask Destroy (0.2ms)[0m  [1m[31mDELETE FROM "tasks" WHERE "tasks"."id" = $1[0m  [["id", 11]]
+  ↳ app/controllers/tasks_controller.rb:30:in `destroy'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/tasks_controller.rb:30:in `destroy'
+  Rendering tasks/destroy.js.erb
+  Rendered tasks/destroy.js.erb (Duration: 1.0ms | Allocations: 118)
+Completed 200 OK in 14ms (Views: 3.2ms | ActiveRecord: 2.0ms | Allocations: 8062)
+
+

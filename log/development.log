@@ -3261,3 +3261,21 @@ Processing by TasksController#destroy as JS
 Completed 200 OK in 14ms (Views: 3.2ms | ActiveRecord: 2.0ms | Allocations: 8062)
 
 
+Started GET "/tasks" for ::1 at 2019-09-04 14:22:09 +0900
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by TasksController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:8:in `current_user'
+  Rendering tasks/index.html.slim within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(DISTINCT "tasks"."id") FROM "tasks" WHERE "tasks"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/views/tasks/index.html.slim:18
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT DISTINCT "tasks"."id" AS count_column FROM "tasks" WHERE "tasks"."user_id" = $1 LIMIT $2 OFFSET $3) subquery_for_count[0m  [["user_id", 4], ["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/views/tasks/index.html.slim:19
+  [1m[36mTask Load (0.3ms)[0m  [1m[34mSELECT DISTINCT "tasks".* FROM "tasks" WHERE "tasks"."user_id" = $1 LIMIT $2 OFFSET $3[0m  [["user_id", 4], ["LIMIT", 25], ["OFFSET", 0]]
+  ↳ app/views/tasks/index.html.slim:29
+  Rendered tasks/index.html.slim within layouts/application (Duration: 196.2ms | Allocations: 121206)
+[Webpacker] Compiling…
+[Webpacker] Compiled all packs in /Users/nttk/Git/rails/taskleaf/public/packs
+Completed 200 OK in 11238ms (Views: 11192.7ms | ActiveRecord: 7.3ms | Allocations: 1776381)
+
+

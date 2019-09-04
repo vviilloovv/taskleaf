@@ -73,3 +73,6 @@ gem "ransack"
 
 # ページング処理
 gem "kaminari"
+
+# Job実行
+gem "sidekiq"

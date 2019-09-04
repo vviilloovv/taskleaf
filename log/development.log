@@ -2872,3 +2872,25 @@ Processing by TasksController#index as HTML
 Completed 200 OK in 21ms (Views: 16.9ms | ActiveRecord: 1.4ms | Allocations: 11857)
 
 
+Started DELETE "/logout" for ::1 at 2019-09-04 11:41:34 +0900
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"CzOYWfpFwIrZq1sx26vjP4OLRN8lHeoCftmu4gGYYhFutMjpJEYHOyANtpZ2EspTxRbGuOQ3882p2Ks8KMz/7A=="}
+Redirected to http://localhost:3000/
+Completed 302 Found in 8ms (ActiveRecord: 0.0ms | Allocations: 596)
+
+
+Started GET "/" for ::1 at 2019-09-04 11:41:34 +0900
+Processing by TasksController#index as HTML
+Redirected to http://localhost:3000/login
+Filter chain halted as :login_required rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 765)
+
+
+Started GET "/login" for ::1 at 2019-09-04 11:41:34 +0900
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.slim within layouts/application
+  Rendered sessions/new.html.slim within layouts/application (Duration: 39.2ms | Allocations: 11707)
+Completed 200 OK in 1152ms (Views: 1140.2ms | ActiveRecord: 0.0ms | Allocations: 1646227)
+
+
